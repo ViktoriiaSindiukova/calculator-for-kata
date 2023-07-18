@@ -2,14 +2,14 @@ import java.beans.Introspector;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws Exception {
-         calculate(" ");
-    }
-
-    public static String calculate(String input) throws Exception {
         System.out.print("Input: ");
         Scanner scan = new Scanner(System.in);
         String str = scan.nextLine();
-        String[] strArray = str.split(" ");
+        calculate(str);
+    }
+
+    public static String calculate(String input) throws Exception {
+        String[] strArray = input.split(" ");
         if (strArray.length != 3){ throw new Exception("Sorry, try again."); }
         String result = null;
         int var1 = 0;
@@ -60,8 +60,11 @@ public class Main {
                     case "/":
                         result = a / b;
                         break;
-                    default: throw new Exception("Sorry, try again.");
+                    default:
+                        throw new Exception("Sorry, try again.");
                 }
+            } else {
+                throw new Exception("Sorry, try again.");
             }
 
         return result;
